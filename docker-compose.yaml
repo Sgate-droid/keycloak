@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: July1995@@
+    ports:
+      - "8080:8080"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "443:443"
+    volumes:
+      - /selldome/nginx.conf:/etc/nginx/nginx.conf
+      - /selldome/ssl:/etc/nginx/ssl
